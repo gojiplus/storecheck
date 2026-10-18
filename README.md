@@ -1,7 +1,5 @@
 # storecheck
 
-[![PyPI](https://img.shields.io/pypi/v/storecheck.svg)](https://pypi.org/project/storecheck/)
-[![Python](https://img.shields.io/pypi/pyversions/storecheck.svg)](https://pypi.org/project/storecheck/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit)
 
 Review changes to the examples used by a retrieval-augmented classifier before
@@ -18,20 +16,36 @@ to release that revision, show me regressions, and provide evidence for review.*
 Package design starts from that job, the user's circumstances, and the outcome
 that matters. Checks and integrations must justify their role in that workflow.
 
-This is a local prototype. Install from this checkout; a hosted repository,
-documentation site, and PyPI release have not been verified. Production use needs
+The code and documentation are public; there is no PyPI release yet. Install
+from the repository. Production use needs
 your actual retrieval and classification pipeline, labeled evaluation cases,
 and immutable baseline/candidate snapshots. Storecheck produces review evidence;
 your infrastructure builds indexes and deploys the approved snapshot.
 
-## Work through a release review
+## Getting started
 
-Python 3.12 or later and [uv](https://docs.astral.sh/uv/) are required for development.
+Use Python 3.12 or later and [uv](https://docs.astral.sh/uv/).
 
 ```bash
+git clone https://github.com/gojiplus/storecheck.git
+cd storecheck
 uv sync --all-groups --frozen
 uv run python examples/release_review.py --output-dir /tmp/storecheck-review
 ```
+
+This example needs no API keys or external database. It prints a rejected edit,
+a revised proposal, and a passing validation review. Open the JSON files in
+`/tmp/storecheck-review` to inspect the evidence behind each decision.
+
+To use your own application, supply a callable that returns a predicted label
+for a query and a specified data revision. You also need labeled evaluation
+cases and explicit release requirements. Your application continues to own
+retrieval, model calls, and deployment.
+
+## Work through a release review
+
+Run `uv run python examples/release_review.py --output-dir /tmp/storecheck-review`
+from the checkout to follow the support-ticket engineer's review workflow.
 
 Support operations adds `SSO login access denied` as an authentication example.
 It fixes a login case but also captures a permissions case that was previously
@@ -310,7 +324,8 @@ make ci-docker PYTHON=3.14
 
 The project uses py-canon's uv build backend, src layout, Ruff, Pyright,
 pydoclint, pytest coverage, and shared Sphinx/workflow configuration. The local
-coverage floor is 85%. `uv.lock` pins dependencies; docs include this README.
+coverage floor is 85%. `uv.lock` pins dependencies; the documentation guides
+include sections of this README to keep their content synchronized.
 
 ## Method references
 
