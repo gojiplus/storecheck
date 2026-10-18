@@ -1,0 +1,13 @@
+# Managed by copier — records template version for `copier update`. Do not edit.
+_commit: v1.3.0
+_src_path: gh:gojiplus/py-canon
+author_email: gsood07@gmail.com
+author_name: Gaurav Sood
+coverage_floor: 85
+default_branch: main
+description: Regression gates and diagnostics for retrieval-augmented classifier example
+    stores.
+needs_cli: true
+org: gojiplus
+package_name: storecheck
+project_name: storecheck

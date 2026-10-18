@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "storecheck"
+# Kept in step with project.version by `preen release`, which offers the
+# bump alongside the changelog rename. A stale one outlives the release in
+# someone else's bibliography.
+version: "0.1.0"
+authors:
+  - family-names: "Sood"
+    given-names: "Gaurav"
+repository-code: "https://github.com/gojiplus/storecheck"
+license: MIT

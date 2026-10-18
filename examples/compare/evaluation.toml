@@ -1,0 +1,23 @@
+schema_version = 1
+evalset = "validation.jsonl"
+discovery = "discovery.jsonl"
+group_key = "customer"
+taxonomy = "taxonomy.json"
+
+[pipeline]
+kind = "reference"
+k = 1
+dimension = 1024
+scope_aware = false
+
+[objective]
+metric = "accuracy"
+min_primary_delta = 0.0
+max_right_to_wrong = 0
+max_right_to_wrong_cost = 0
+
+[objective.min_slice_metric]
+authorization = 1.0
+
+[objective.min_slice_cases]
+authorization = 1

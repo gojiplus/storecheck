@@ -1,0 +1,97 @@
+[project]
+name = "storecheck"
+description = "Regression gates and diagnostics for retrieval-augmented classifier example stores."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Gaurav Sood", email = "gsood07@gmail.com" }]
+requires-python = ">=3.12"
+version = "0.1.0"
+keywords = ["retrieval", "classification", "evaluation", "regression-testing"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+]
+dependencies = ["numpy>=1.26"]
+
+[project.urls]
+Homepage = "https://github.com/gojiplus/storecheck"
+Documentation = "https://gojiplus.github.io/storecheck/"
+Repository = "https://github.com/gojiplus/storecheck"
+
+[project.scripts]
+storecheck = "storecheck.__main__:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14",
+    "pyright>=1.1.390",
+    "pre-commit>=4",
+    { include-group = "test" },
+]
+test = ["pytest>=8", "pytest-cov>=6"]
+docs = [
+    "sphinx>=8",
+    "py-canon @ git+https://github.com/gojiplus/py-canon@v1",
+    "furo",
+    "myst-parser",
+    "sphinx-copybutton",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+external = ["DOC"]
+select = [
+    "E", "W", "F", "I", "B", "C4", "UP", "N", "D", "S", "SIM", "T20", "PT", "RUF",
+    "PTH", "RET", "PIE", "FURB", "PERF", "DTZ", "LOG", "G", "TC", "FLY",
+    "RSE", "SLOT", "FA", "A", "EXE", "ICN", "PGH", "PLE", "ARG", "SLF",
+]
+# D203/D213: the google convention the fleet standard picks. W191/D206/D300:
+# ruff's own docs list these as always incompatible with `ruff format`, which
+# the standard also runs.
+ignore = ["D203", "D213", "W191", "D206", "D300"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "D", "ARG", "SLF"]
+"docs/**" = ["D"]
+"examples/**" = ["T201"]
+"src/storecheck/__main__.py" = ["T201"]
+
+[tool.pyright]
+include = ["src"]
+typeCheckingMode = "standard"
+
+[tool.pydoclint]
+style = "google"
+arg-type-hints-in-docstring = false
+check-return-types = false
+check-yield-types = false
+check-class-attributes = false
+allow-init-docstring = true
+exclude = '\.venv|tests|docs'
+
+[tool.pytest.ini_options]
+minversion = "8"
+testpaths = ["tests"]
+log_level = "INFO"
+xfail_strict = true
+filterwarnings = ["error"]
+addopts = ["-ra", "--strict-config", "--strict-markers"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.preen]
+
+[tool.codespell]
+builtin = "clear,rare,en-GB_to_en-US"

@@ -1,0 +1,3 @@
+{"id": "login", "text": "wrong password on login", "label": "authentication", "slices": ["authentication"], "challenge": false, "cost": 1.0, "scope": null, "metadata": {"customer": "customer-1"}}
+{"id": "reports", "text": "logged in permission denied on reports", "label": "authorization", "slices": ["authorization"], "challenge": true, "cost": 50, "scope": null, "metadata": {"customer": "customer-2"}}
+{"id": "refund", "text": "duplicate invoice refund", "label": "billing", "slices": ["billing"], "challenge": false, "cost": 5, "scope": null, "metadata": {"customer": "customer-3"}}

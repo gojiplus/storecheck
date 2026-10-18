@@ -1,0 +1,23 @@
+{
+  "name": "taxonomy",
+  "labels": [
+    {
+      "id": "authentication",
+      "definition": "Problems proving identity, including login and passwords.",
+      "examples_of_boundary": [],
+      "deprecated": false
+    },
+    {
+      "id": "authorization",
+      "definition": "Permission failures after successful authentication.",
+      "examples_of_boundary": [],
+      "deprecated": false
+    },
+    {
+      "id": "billing",
+      "definition": "Charges, invoices, refunds, and payment methods.",
+      "examples_of_boundary": [],
+      "deprecated": false
+    }
+  ]
+}
